@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ImageButton
+        android:id="@+id/startbtn"
+        android:layout_width="98dp"
+        android:layout_height="87dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:src="@android:drawable/ic_media_play" />
+
+    <SeekBar
+        android:id="@+id/progressBar"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="265dp"
+        android:layout_height="200dp"
+        android:layout_below="@id/lista"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true" />
+
+    <ImageButton
+        android:id="@+id/stopbtn"
+        android:layout_width="98dp"
+        android:layout_height="87dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:src="@android:drawable/ic_media_pause" />
+
+    <TextView
+        android:id="@+id/nazwa"
+        android:layout_width="121dp"
+        android:layout_height="33dp"
+        android:paddingLeft="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:text="00:00" />
+
+    <TextView
+        android:id="@+id/koniec"
+        android:layout_width="55dp"
+        android:layout_height="33dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:text="00:00"
+
+        />
+
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:foregroundGravity="center"
+        android:layout_below="@id/gogo"
+
+        android:id="@+id/lista"
+        android:layout_above="@id/nazwa"/>
+
+    <ImageButton
+        android:id="@+id/gogo"
+        android:layout_alignParentLeft="true"
+        android:layout_width="98dp"
+        android:layout_height="87dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/startbtn"
+        app:srcCompat="@android:drawable/ic_media_ff" />
+    <ImageButton
+        android:id="@+id/back"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/stopbtn"
+        android:layout_width="98dp"
+        android:layout_height="87dp"
+        android:layout_centerHorizontal="true"
+        app:srcCompat="@android:drawable/ic_media_rew" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="210dp"
+        android:layout_height="87dp"
+        android:layout_below="@id/stopbtn"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:text="TextView" />
+
+    <ImageButton
+        android:id="@+id/round"
+        android:layout_width="98dp"
+        android:layout_height="87dp"
+        android:layout_above="@id/title"
+        android:layout_centerHorizontal="true"
+        app:srcCompat="@android:drawable/ic_menu_compass" />
+
+
+</RelativeLayout>
