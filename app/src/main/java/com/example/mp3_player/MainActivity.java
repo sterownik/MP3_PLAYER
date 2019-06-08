@@ -194,6 +194,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(mp[0].getDuration()+5000>mp[0].getCurrentPosition()) {
                     mp[0].seekTo(mp[0].getCurrentPosition() + 5000, MediaPlayer.SEEK_NEXT_SYNC);
+                    progres.setProgress((int) mp[0].getCurrentPosition());
+                    int sec = (int)(mp[0].getCurrentPosition()%(1000*60*60)%(1000*60)/1000);
+                    int min = (int)mp[0].getCurrentPosition()%(1000*60*60)/(1000*60);
+                    tytul.setText(String.format("%02d:%02d",min,sec));
                 }
             }
         });
@@ -204,6 +208,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(mp[0].getDuration()-5000>mp[0].getCurrentPosition()) {
                     mp[0].seekTo(mp[0].getCurrentPosition() - 5000, MediaPlayer.SEEK_NEXT_SYNC);
+                    progres.setProgress((int) mp[0].getCurrentPosition());
+                    int sec = (int)(mp[0].getCurrentPosition()%(1000*60*60)%(1000*60)/1000);
+                    int min = (int)mp[0].getCurrentPosition()%(1000*60*60)/(1000*60);
+                    tytul.setText(String.format("%02d:%02d",min,sec));
                 }
             }
         });
@@ -217,7 +225,7 @@ public class MainActivity extends AppCompatActivity {
                 if(!mp[0].isPlaying()){
                     mp[0].start();
                     gra=true;
-                    
+
                 }
 
 
@@ -234,8 +242,6 @@ public class MainActivity extends AppCompatActivity {
                 {
                     mp[0].pause();
                     gra = false;
-
-
                 }
 
             }
@@ -249,17 +255,12 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 if(gra)
                 {
-
                     int sec = (int)(mp[0].getCurrentPosition()%(1000*60*60)%(1000*60)/1000);
                     int min = (int)mp[0].getCurrentPosition()%(1000*60*60)/(1000*60);
-
                     tytul.setText(String.format("%02d:%02d",min,sec));
                     int sec2 = (int)(mp[0].getDuration()%(1000*60*60)%(1000*60)/1000);
                     int min2 = (int)mp[0].getDuration()%(1000*60*60)/(1000*60);
                     koniec.setText(String.format("%02d:%02d",min2,sec2));
-
-
-
                     progres.setMax((int) mp[0].getDuration());
                     progres.setProgress((int) mp[0].getCurrentPosition());
                 }
