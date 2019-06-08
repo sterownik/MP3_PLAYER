@@ -1,17 +1,21 @@
 package com.example.mp3_player;
 
+import android.app.Activity;
+import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Handler;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Selection;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -33,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         final TextView koniec = (TextView)findViewById(R.id.koniec);
         final ImageButton stop = (ImageButton)findViewById(R.id.stopbtn);
         ImageButton losuj = (ImageButton)findViewById(R.id.round);
+        final RelativeLayout rel = (RelativeLayout)findViewById(R.id.relative);
 
         ImageButton go = (ImageButton)findViewById(R.id.gogo);
         final ImageButton back = (ImageButton)findViewById(R.id.back);
@@ -81,11 +86,11 @@ public class MainActivity extends AppCompatActivity {
                 R.raw.dopki,
                 R.raw.avengers,
                 R.raw.hossa
-
-
-
-
         };
+
+
+
+
         tit.setText("Bonson - Bonson musi umrzeć");
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_list_item_1,liscik);
@@ -94,10 +99,13 @@ public class MainActivity extends AppCompatActivity {
         if(mp[0].isPlaying()) start.setEnabled(false);
         else start.setEnabled(true);
 
+
         losuj.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Random rand = new Random();
+
                 int random = rand.nextInt(piosenki.length);
                 mp[0].pause();
                 mp[0]= MediaPlayer.create(getApplicationContext(),piosenki[random]);
@@ -105,6 +113,7 @@ public class MainActivity extends AppCompatActivity {
                 {
                     case R.raw.bonson_jeden:
                         tit.setText("Bonson - Bonson musi umrzeć");
+
                         break;
                     case R.raw.trzeci_stajl:
                         tit.setText("Trzeci wymiar - Dla mnie masz stajla");
@@ -148,11 +157,10 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.raw.avengers:
                         tit.setText("Quebonafide - Avengers");
+
                         break;
                     case R.raw.hossa:
                         tit.setText("Quebonafide - Hossa");
-
-
 
                 }
 
@@ -210,10 +218,10 @@ public class MainActivity extends AppCompatActivity {
                 if(!mp[0].isPlaying()){
                     mp[0].start();
                     gra=true;
-                    stop.setEnabled(true);
                     start.setEnabled(false);
-
+                    stop.setEnabled(true);
                 }
+                
 
             }
         });
@@ -228,9 +236,11 @@ public class MainActivity extends AppCompatActivity {
                 {
                     mp[0].pause();
                     gra = false;
-                    stop.setEnabled(false);
                     start.setEnabled(true);
+                    stop.setEnabled(false);
+
                 }
+
             }
         });
 
@@ -250,6 +260,8 @@ public class MainActivity extends AppCompatActivity {
                     int sec2 = (int)(mp[0].getDuration()%(1000*60*60)%(1000*60)/1000);
                     int min2 = (int)mp[0].getDuration()%(1000*60*60)/(1000*60);
                     koniec.setText(String.format("%02d:%02d",min2,sec2));
+
+
 
                     progres.setMax((int) mp[0].getDuration());
                     progres.setProgress((int) mp[0].getCurrentPosition());
