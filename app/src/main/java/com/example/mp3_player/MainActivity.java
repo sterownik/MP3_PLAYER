@@ -96,8 +96,7 @@ public class MainActivity extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_list_item_1,liscik);
 
         lista.setAdapter(adapter);
-        if(mp[0].isPlaying()) start.setEnabled(false);
-        else start.setEnabled(true);
+
 
 
         losuj.setOnClickListener(new View.OnClickListener() {
@@ -218,10 +217,9 @@ public class MainActivity extends AppCompatActivity {
                 if(!mp[0].isPlaying()){
                     mp[0].start();
                     gra=true;
-                    start.setEnabled(false);
-                    stop.setEnabled(true);
+                    
                 }
-                
+
 
             }
         });
@@ -236,8 +234,7 @@ public class MainActivity extends AppCompatActivity {
                 {
                     mp[0].pause();
                     gra = false;
-                    start.setEnabled(true);
-                    stop.setEnabled(false);
+
 
                 }
 
